@@ -2,7 +2,8 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){	
-
+    
+    ofBackground(0);
 }
 
 //--------------------------------------------------------------
@@ -13,8 +14,9 @@ void ofApp::update(){
 //--------------------------------------------------------------
 void ofApp::draw(){
     
-    for (int i = 0; i < TOUCH_NUM; i++) {
-        ofEllipse(touchPos[i], 100, 100);
+    ofSetColor(255);
+    for (int i = 0; i < touchedPos.size(); i++) {
+        ofEllipse(touchedPos[i], 100, 100);
     }
 	
 }
@@ -26,17 +28,17 @@ void ofApp::exit(){
 
 //--------------------------------------------------------------
 void ofApp::touchDown(ofTouchEventArgs & touch){
-    touchPos[touch.id] = ofPoint(touch.x, touch.y);
+    touchedPos.push_back(ofPoint(touch.x, touch.y));
 }
 
 //--------------------------------------------------------------
 void ofApp::touchMoved(ofTouchEventArgs & touch){
-    touchPos[touch.id] = ofPoint(touch.x, touch.y);
+    touchedPos.push_back(ofPoint(touch.x, touch.y));
 }
 
 //--------------------------------------------------------------
 void ofApp::touchUp(ofTouchEventArgs & touch){
-    touchPos[touch.id] = ofPoint(touch.x, touch.y);
+    
 }
 
 //--------------------------------------------------------------

@@ -26,7 +26,7 @@ public:
     void deviceOrientationChanged(int newOrientation);
 
     
-    ofPoint touchPos[TOUCH_NUM];
+    vector<ofPoint> touchedPos;
     
 };
 
