@@ -4,21 +4,38 @@
 void ofApp::setup(){	
     
     ofBackground(0);
+    
+    gui.setDefaultWidth(500);
+    gui.setDefaultHeight(100);
+    gui.setup();
+    gui.setName("settings");
+    gui.add(colorSlider.setup("color", 255, 0, 255));
+    gui.add(lineSizeSlider.setup("LineSize", 100, 1, 500));
+    
+    mFbo.allocate(ofGetWidth(), ofGetHeight(),GL_RGBA);
+    mFbo.begin();
+    ofClear(255, 255, 255, 0);
+    mFbo.end();
+    
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-
+    mFbo.begin();
+    ofSetColor(colorSlider);
+    for (int i = 0; i < touchedPos.size(); i++) {
+        ofEllipse(touchedPos[i], lineSizeSlider, lineSizeSlider);
+    }
+    touchedPos.clear(); //描画したら初期化
+    mFbo.end();
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    
     ofSetColor(255);
-    for (int i = 0; i < touchedPos.size(); i++) {
-        ofEllipse(touchedPos[i], 100, 100);
-    }
-	
+    mFbo.draw(0, 0);
+    
+    gui.draw();
 }
 
 //--------------------------------------------------------------

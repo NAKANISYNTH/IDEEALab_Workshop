@@ -3,6 +3,7 @@
 #include "ofMain.h"
 #include "ofxiOS.h"
 #include "ofxiOSExtras.h"
+#include "ofxGui.h"
 
 #define TOUCH_NUM 5
 
@@ -28,6 +29,11 @@ public:
     
     vector<ofPoint> touchedPos;
     
+    ofxPanel gui;
+    ofxColorSlider colorSlider;
+    ofxIntSlider lineSizeSlider;
+    
+    ofFbo mFbo;
 };
 
 
