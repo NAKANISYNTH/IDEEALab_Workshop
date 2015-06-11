@@ -17,6 +17,7 @@ void ofApp::setup(){
     ofClear(255, 255, 255, 0);
     mFbo.end();
     
+    bShowGui = true;
 }
 
 //--------------------------------------------------------------
@@ -35,7 +36,12 @@ void ofApp::draw(){
     ofSetColor(255);
     mFbo.draw(0, 0);
     
-    gui.draw();
+    if (bShowGui) {
+        gui.draw();
+    }
+    
+    ofSetColor(255);
+    ofDrawBitmapString(ofToString(ofGetFrameRate()), 10, ofGetHeight()-20);
 }
 
 //--------------------------------------------------------------
@@ -60,7 +66,7 @@ void ofApp::touchUp(ofTouchEventArgs & touch){
 
 //--------------------------------------------------------------
 void ofApp::touchDoubleTap(ofTouchEventArgs & touch){
-
+    bShowGui = !bShowGui;
 }
 
 //--------------------------------------------------------------

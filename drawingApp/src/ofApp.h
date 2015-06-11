@@ -34,6 +34,8 @@ public:
     ofxIntSlider lineSizeSlider;
     
     ofFbo mFbo;
+    
+    bool bShowGui;
 };
 
 
