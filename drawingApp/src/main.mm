@@ -1,5 +1,6 @@
 #include "ofMain.h"
 #include "ofApp.h"
+#include "ofxiOSAdjustWindow.h"
 
 extern "C"{
     size_t fwrite$UNIX2003( const void *a, size_t b, size_t c, FILE *d )
@@ -20,7 +21,8 @@ extern "C"{
 }
 
 int main(){
-	ofSetupOpenGL(1024,768,OF_FULLSCREEN);			// <-------- setup the GL context
-
+//	ofSetupOpenGL(1024,768,OF_FULLSCREEN);			// <-------- setup the GL context
+    ofxiOSAdjustWindow a;
+    
 	ofRunApp(new ofApp());
 }
