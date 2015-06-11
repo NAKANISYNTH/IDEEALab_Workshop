@@ -18,16 +18,21 @@ void ofApp::setup(){
     mFbo.end();
     
     bShowGui = true;
+    
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
     mFbo.begin();
     ofSetColor(colorSlider);
-    for (int i = 0; i < touchedPos.size(); i++) {
-        ofEllipse(touchedPos[i], lineSizeSlider, lineSizeSlider);
+    for (int tId = 0; tId < TOUCH_NUM; tId++) {
+        if (bTouching[tId]) {
+            ofEllipse(touchedPos[tId], lineSizeSlider, lineSizeSlider);
+            ofLine(preTouchedPos[tId], touchedPos[tId]);
+        }
+        preTouchedPos[tId] = touchedPos[tId];
+        
     }
-    touchedPos.clear(); //描画したら初期化
     mFbo.end();
 }
 
@@ -51,17 +56,19 @@ void ofApp::exit(){
 
 //--------------------------------------------------------------
 void ofApp::touchDown(ofTouchEventArgs & touch){
-    touchedPos.push_back(ofPoint(touch.x, touch.y));
+    touchedPos[touch.id] = ofPoint(touch.x, touch.y);
+    bTouching[touch.id] = true;
 }
 
 //--------------------------------------------------------------
 void ofApp::touchMoved(ofTouchEventArgs & touch){
-    touchedPos.push_back(ofPoint(touch.x, touch.y));
+    touchedPos[touch.id] = ofPoint(touch.x, touch.y);
 }
 
 //--------------------------------------------------------------
 void ofApp::touchUp(ofTouchEventArgs & touch){
     
+    bTouching[touch.id] = false;
 }
 
 //--------------------------------------------------------------

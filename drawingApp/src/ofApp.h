@@ -27,7 +27,9 @@ public:
     void deviceOrientationChanged(int newOrientation);
 
     
-    vector<ofPoint> touchedPos;
+    ofPoint touchedPos[TOUCH_NUM];
+    ofPoint preTouchedPos[TOUCH_NUM];
+    bool bTouching[TOUCH_NUM];
     
     ofxPanel gui;
     ofxColorSlider colorSlider;
