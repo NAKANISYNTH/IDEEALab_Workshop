@@ -4,8 +4,7 @@
 #include "ofxiOS.h"
 #include "ofxiOSExtras.h"
 #include "ofxGui.h"
-
-#define TOUCH_NUM 5
+#include "iOSDevice.h"
 
 class ofApp : public ofxiOSApp {
 
@@ -25,11 +24,12 @@ public:
     void gotFocus();
     void gotMemoryWarning();
     void deviceOrientationChanged(int newOrientation);
-
     
-    ofPoint touchedPos[TOUCH_NUM];
-    ofPoint preTouchedPos[TOUCH_NUM];
-    bool bTouching[TOUCH_NUM];
+    int TOUCH_NUM = 5;
+    
+    vector<ofPoint> touchedPos;
+    vector<ofPoint> preTouchedPos;
+    vector<bool> bTouching;
     
     ofxPanel gui;
     ofxColorSlider colorSlider;

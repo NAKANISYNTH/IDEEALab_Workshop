@@ -1,7 +1,14 @@
 #include "ofApp.h"
 
 //--------------------------------------------------------------
-void ofApp::setup(){	
+void ofApp::setup(){
+    
+    if (isiPad) {
+        TOUCH_NUM = 10;
+    }
+    touchedPos.resize(TOUCH_NUM);
+    preTouchedPos.resize(TOUCH_NUM);
+    bTouching.resize(TOUCH_NUM);
     
     ofBackground(0);
     
