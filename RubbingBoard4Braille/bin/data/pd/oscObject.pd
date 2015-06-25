@@ -1,0 +1,57 @@
+#N canvas 66 478 474 637 10;
+#X obj 262 230 line~;
+#X obj 149 343 *~;
+#X floatatom 262 178 5 0 0 0 - - -;
+#X obj 73 274 osc~;
+#X obj 262 152 inlet volume;
+#X obj 315 178 hsl 128 15 0 2 0 0 empty empty empty -2 -8 0 10 -257985
+-1 -1 0 1;
+#X obj 150 446 outlet~;
+#X floatatom 163 174 5 0 120 0 - - -;
+#X obj 73 249 line~;
+#X msg 73 221 \$1 5;
+#X obj 163 198 mtof;
+#X msg 262 203 \$1 20;
+#X obj 73 150 inlet freq;
+#X obj 163 150 inlet note;
+#N canvas 665 598 703 493 distortion 1;
+#X obj -27 35 inlet~ input;
+#X obj -26 362 outlet~ output;
+#X floatatom -9 145 5 1 10000 0 - - -;
+#X obj 100 136 hsl 128 15 0 -1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 101 186 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X floatatom 97 160 5 0 0 0 - - -;
+#X floatatom 98 208 5 0 0 0 - - -;
+#X obj 151 89 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 104 110 * -1;
+#X obj -26 178 *~ 2;
+#X obj -26 206 clip~ -0.4 0.4;
+#X connect 0 0 9 0;
+#X connect 2 0 9 1;
+#X connect 3 0 5 0;
+#X connect 3 0 10 1;
+#X connect 4 0 6 0;
+#X connect 4 0 10 2;
+#X connect 7 0 4 0;
+#X connect 7 0 8 0;
+#X connect 8 0 3 0;
+#X connect 9 0 10 0;
+#X connect 10 0 1 0;
+#X restore 149 386 pd distortion;
+#X connect 0 0 1 1;
+#X connect 1 0 14 0;
+#X connect 2 0 11 0;
+#X connect 3 0 1 0;
+#X connect 4 0 2 0;
+#X connect 5 0 2 0;
+#X connect 7 0 10 0;
+#X connect 8 0 3 0;
+#X connect 9 0 8 0;
+#X connect 10 0 9 0;
+#X connect 11 0 0 0;
+#X connect 12 0 9 0;
+#X connect 13 0 7 0;
+#X connect 14 0 6 0;
