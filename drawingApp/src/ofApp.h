@@ -27,17 +27,23 @@ public:
     
     int TOUCH_NUM = 5;
     
+    
+    
     vector<ofPoint> touchedPos;
     vector<ofPoint> preTouchedPos;
     vector<bool> bTouching;
+    vector<bool> bMoving;
     
     ofxPanel gui;
     ofxColorSlider colorSlider;
     ofxIntSlider lineSizeSlider;
+    ofxIntSlider resampleNumSlider;
+    ofxIntSlider bgArphaSlider;
     
     ofFbo mFbo;
     
     bool bShowGui;
+    
 };
 
 
