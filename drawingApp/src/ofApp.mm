@@ -3,6 +3,9 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
     
+    ofSetCircleResolution(100);
+    ofEnableSmoothing();
+    
     if (isiPad) {
         TOUCH_NUM = 10;
     }
@@ -13,10 +16,9 @@ void ofApp::setup(){
     ofBackground(0);
     
     gui.setDefaultWidth(500);
-    gui.setDefaultHeight(100);
+    gui.setDefaultHeight(50);
     gui.setup();
-    gui.setName("settings");
-    gui.add(colorSlider.setup("color", 255, 0, 255));
+    gui.add(colorSlider.setup("color", ofColor(100,100), ofColor(0,0), ofColor(255,255)));
     gui.add(lineSizeSlider.setup("LineSize", 100, 1, 500));
     
     mFbo.allocate(ofGetWidth(), ofGetHeight(),GL_RGBA);
@@ -26,6 +28,9 @@ void ofApp::setup(){
     
     bShowGui = true;
     
+    gui.getPosition();
+    gui.getHeight();
+    gui.getWidth();
 }
 
 //--------------------------------------------------------------
