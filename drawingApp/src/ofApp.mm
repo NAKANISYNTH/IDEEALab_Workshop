@@ -40,7 +40,7 @@ void ofApp::update(){
     for (int tId = 0; tId < TOUCH_NUM; tId++) {
         if (bTouching[tId]) {
             ofEllipse(touchedPos[tId], lineSizeSlider, lineSizeSlider);
-            ofLine(preTouchedPos[tId], touchedPos[tId]);
+//            ofLine(preTouchedPos[tId], touchedPos[tId]);
         }
         preTouchedPos[tId] = touchedPos[tId];
         
@@ -68,13 +68,24 @@ void ofApp::exit(){
 
 //--------------------------------------------------------------
 void ofApp::touchDown(ofTouchEventArgs & touch){
-    touchedPos[touch.id] = ofPoint(touch.x, touch.y);
-    bTouching[touch.id] = true;
+    ofMouseEventArgs arg;
+    arg.x = touch.x;
+    arg.y = touch.y;
+    if (!gui.mousePressed(arg)) {
+        touchedPos[touch.id] = ofPoint(touch.x, touch.y);
+        bTouching[touch.id] = true;
+    }
 }
 
 //--------------------------------------------------------------
 void ofApp::touchMoved(ofTouchEventArgs & touch){
-    touchedPos[touch.id] = ofPoint(touch.x, touch.y);
+    ofMouseEventArgs arg;
+    arg.x = touch.x;
+    arg.y = touch.y;
+    
+    if (!gui.mouseMoved(arg)) {
+        touchedPos[touch.id] = ofPoint(touch.x, touch.y);
+    }
 }
 
 //--------------------------------------------------------------
