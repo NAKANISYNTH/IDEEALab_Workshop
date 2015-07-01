@@ -42,6 +42,7 @@
 		E4D8936E11527B74007E1F53 /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = E4D8936B11527B74007E1F53 /* main.mm */; };
 		E4D8936F11527B74007E1F53 /* ofApp.mm in Sources */ = {isa = PBXBuildFile; fileRef = E4D8936D11527B74007E1F53 /* ofApp.mm */; };
 		E69231721B29510800B829AF /* iOSDevice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E692316F1B29510800B829AF /* iOSDevice.cpp */; };
+		E6AA718A1B43A1F300D452C9 /* particle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E6AA71881B43A1F300D452C9 /* particle.cpp */; };
 		F285EB3169F1566CA3D93C20 /* ofxPanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E112B3AEBEA2C091BF2B40AE /* ofxPanel.cpp */; };
 /* End PBXBuildFile section */
 
@@ -114,6 +115,8 @@
 		E692316F1B29510800B829AF /* iOSDevice.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = iOSDevice.cpp; sourceTree = "<group>"; };
 		E69231701B29510800B829AF /* iOSDevice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iOSDevice.h; sourceTree = "<group>"; };
 		E69231711B29510800B829AF /* ofxiOSAdjustWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxiOSAdjustWindow.h; sourceTree = "<group>"; };
+		E6AA71881B43A1F300D452C9 /* particle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = particle.cpp; sourceTree = "<group>"; };
+		E6AA71891B43A1F300D452C9 /* particle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = particle.h; sourceTree = "<group>"; };
 		ECF8674C7975F1063C5E30CA /* ofxGuiGroup.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxGuiGroup.cpp; path = ../../../addons/ofxGui/src/ofxGuiGroup.cpp; sourceTree = SOURCE_ROOT; };
 		FC5DA1C87211D4F6377DA719 /* tinyxmlparser.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = tinyxmlparser.cpp; path = ../../../addons/ofxXmlSettings/libs/tinyxmlparser.cpp; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -301,6 +304,8 @@
 				E4D8936B11527B74007E1F53 /* main.mm */,
 				E4D8936D11527B74007E1F53 /* ofApp.mm */,
 				E4D8936C11527B74007E1F53 /* ofApp.h */,
+				E6AA71881B43A1F300D452C9 /* particle.cpp */,
+				E6AA71891B43A1F300D452C9 /* particle.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -428,6 +433,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4D8936E11527B74007E1F53 /* main.mm in Sources */,
+				E6AA718A1B43A1F300D452C9 /* particle.cpp in Sources */,
 				E4D8936F11527B74007E1F53 /* ofApp.mm in Sources */,
 				856AA354D08AB4B323081444 /* ofxBaseGui.cpp in Sources */,
 				5CBB2AB3A60F65431D7B555D /* ofxButton.cpp in Sources */,

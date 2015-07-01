@@ -6,6 +6,8 @@
 #include "ofxGui.h"
 #include "iOSDevice.h"
 
+#include "particle.h"
+
 class ofApp : public ofxiOSApp {
 
 public:
@@ -44,6 +46,8 @@ public:
     
     bool bShowGui;
     
+    vector<particle*> mParticles;
+    static const int MAX_PARTICLE_NUM = 100;
 };
 
 

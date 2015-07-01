@@ -23,7 +23,7 @@ void ofApp::setup(){
     gui.add(colorSlider.setup("color", ofColor(100,100), ofColor(0,0), ofColor(255,255)));
     gui.add(lineSizeSlider.setup("LineSize", 100, 1, 500));
     gui.add(resampleNumSlider.setup("resampleNum", 15, 1, 30));
-    gui.add(bgArphaSlider.setup("bgArpha", 10, 0, 100));
+    gui.add(bgArphaSlider.setup("bgArpha", 10, 0, 255));
     
     mFbo.allocate(ofGetWidth(), ofGetHeight(),GL_RGBA);
     mFbo.begin();
@@ -31,8 +31,6 @@ void ofApp::setup(){
     mFbo.end();
     
     bShowGui = true;
-    
-
     
 }
 
@@ -65,6 +63,11 @@ void ofApp::update(){
             
         }
         
+        
+        for (int i = 0; i < mParticles.size(); i++) {
+            mParticles[i]->update();
+            mParticles[i]->draw();
+        }
     }
     
     mFbo.end();
@@ -108,6 +111,13 @@ void ofApp::touchMoved(ofTouchEventArgs & touch){
     if (!gui.mouseMoved(arg)) {
         touchedPos[touch.id] = ofPoint(touch.x, touch.y);
         bMoving[touch.id] = true;
+        
+        particle *p = new particle(ofVec2f(touch.x, touch.y));
+        mParticles.push_back(p);
+        if (mParticles.size() > MAX_PARTICLE_NUM) {
+            mParticles.erase(mParticles.begin());
+        }
+        
     }
 }
 
