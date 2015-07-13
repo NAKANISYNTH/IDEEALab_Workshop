@@ -42,6 +42,7 @@ void ofApp::update(){
     ofSetColor(255, bgArphaSlider);
     ofRect(0, 0, ofGetWidth(), ofGetHeight());
     
+    
     ofSetColor(colorSlider);
     for (int tId = 0; tId < TOUCH_NUM; tId++) {
         if (bTouching[tId]) {
@@ -71,6 +72,7 @@ void ofApp::update(){
     }
     
     mFbo.end();
+    
 }
 
 //--------------------------------------------------------------
