@@ -21,5 +21,5 @@ void Ball::update(){
 }
 
 void Ball::draw(){
-    ofCircle(position, ofRandom(10));
+    ofCircle(position, ofRandom(10)); //circleの描画
 }

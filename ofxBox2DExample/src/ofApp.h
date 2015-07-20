@@ -39,7 +39,10 @@ public:
     float bounce = 0.53;
     float friction = 0.1;
     
+    float gravity = 50;
     bool isInputingGUI;
+    
+    bool bShowGui = true;
 
 };
 

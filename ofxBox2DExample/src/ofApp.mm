@@ -10,7 +10,7 @@ void ofApp::setup(){
     box2d.init();
     box2d.setGravity(0, 10);
 //    box2d.createBounds();
-    box2d.createGround();
+//    box2d.createBounds();
     box2d.setFPS(60.0);
     box2d.registerGrabbing();
     
@@ -33,18 +33,24 @@ void ofApp::setup(){
     gui->addRadio("MODE SWITCH", names, OFX_UI_ORIENTATION_HORIZONTAL);
     gui->addButton("CLEAR_LINE", false);
     
-    gui->addSlider("DENSITY", 0, 10, 3);
-    gui->addSlider("BOUNCE", 0, 10, 0.53);
-    gui->addSlider("FRICTION", 0, 10, 0.1);
+    gui->addSlider("DENSITY", 0, 100, density);
+    gui->addSlider("BOUNCE", 0, 2, bounce);
+    gui->addSlider("FRICTION", 0, 100, friction);
+    gui->addSlider("GRAVITY", 0, 1000, gravity);
     
     gui->autoSizeToFitWidgets();
     ofAddListener(gui->newGUIEvent, this, &ofApp::guiEvent);
 //    gui->loadSettings("settings.xml");
+    
+    ofxAccelerometer.setup();
+    
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
     box2d.update();
+    
+    box2d.setGravity(ofxAccelerometer.getForce().x*gravity, -ofxAccelerometer.getForce().y*gravity);
     
     ofRemove(boxes, ofxBox2dBaseShape::shouldRemoveOffScreen);
     ofRemove(circles, ofxBox2dBaseShape::shouldRemoveOffScreen);
@@ -162,7 +168,10 @@ void ofApp::touchUp(ofTouchEventArgs & touch){
 
 //--------------------------------------------------------------
 void ofApp::touchDoubleTap(ofTouchEventArgs & touch){
-
+    
+    bShowGui = !bShowGui;
+    gui->setVisible(bShowGui);
+    
 }
 
 
@@ -208,5 +217,10 @@ void ofApp::guiEvent(ofxUIEventArgs &e)
     {
         ofxUISlider *slider = (ofxUISlider *) e.widget;
         friction = slider->getScaledValue();
+    }
+    else if(e.getName() == "GRAVITY")
+    {
+        ofxUISlider *slider = (ofxUISlider *) e.widget;
+        gravity = slider->getScaledValue();
     }
 }
