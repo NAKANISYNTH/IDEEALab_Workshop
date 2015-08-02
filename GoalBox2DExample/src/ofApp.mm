@@ -8,11 +8,12 @@ void ofApp::setup(){
     ofSetLogLevel(OF_LOG_NOTICE);
     
     box2d.init();
+    box2d.enableEvents();
     box2d.setGravity(0, 10);
-//    box2d.createBounds();
 //    box2d.createBounds();
     box2d.setFPS(60.0);
     box2d.registerGrabbing();
+    box2d.setIterations(1, 1); // minimum for IOS
     
     
     //----gui
@@ -42,6 +43,16 @@ void ofApp::setup(){
     ofAddListener(gui->newGUIEvent, this, &ofApp::guiEvent);
 //    gui->loadSettings("settings.xml");
     
+    ofAddListener(box2d.contactStartEvents, this, &ofApp::contactStart);
+    ofAddListener(box2d.contactEndEvents, this, &ofApp::contactEnd);
+    
+    // load the 8 sfx soundfile
+    for (int i=0; i<N_SOUNDS; i++) {
+        sound[i].loadSound("sfx/bb.wav");
+//        sound[i].setLoop(false);
+    }
+//    snd.loadSound("0.mp3");
+    
     ofxAccelerometer.setup();
     
 }
@@ -54,6 +65,8 @@ void ofApp::update(){
     
     ofRemove(boxes, ofxBox2dBaseShape::shouldRemoveOffScreen);
     ofRemove(circles, ofxBox2dBaseShape::shouldRemoveOffScreen);
+    
+    
 }
 
 //--------------------------------------------------------------
@@ -63,12 +76,18 @@ void ofApp::draw(){
         
         ofFill();
         ofSetHexColor(0xf6c738);
+        SoundData * data = (SoundData*)circles[i].get()->getData();
+        
+        if(data && data->bHit) ofSetHexColor(0xff0000);
         circles[i].get()->draw();
     }
     
     for(int i=0; i<boxes.size(); i++) {
         ofFill();
         ofSetHexColor(0xBF2545);
+        SoundData * data = (SoundData*)circles[i].get()->getData();
+        
+        if(data && data->bHit) ofSetHexColor(0xB025F5);
         boxes[i].get()->draw();
     }
     
@@ -128,6 +147,10 @@ void ofApp::touchMoved(ofTouchEventArgs & touch){
             circles.push_back(shared_ptr<ofxBox2dCircle>(new ofxBox2dCircle));
             circles.back().get()->setPhysics(density, bounce, friction);
             circles.back().get()->setup(box2d.getWorld(), mouseX, mouseY, r);
+            circles.back().get()->setData(new SoundData());
+            SoundData * sd = (SoundData*)circles.back().get()->getData();
+            sd->soundID = ofRandom(0, N_SOUNDS);
+            sd->bHit	= false;
         }
         else if (mode == MODE_RECTANGLE) {
             int w = ofRandom(10, 50);
@@ -135,12 +158,17 @@ void ofApp::touchMoved(ofTouchEventArgs & touch){
             boxes.push_back(shared_ptr<ofxBox2dRect>(new ofxBox2dRect));
             boxes.back().get()->setPhysics(density, bounce, friction);
             boxes.back().get()->setup(box2d.getWorld(), mouseX, mouseY, w, h);
+            boxes.back().get()->setData(new SoundData());
+            SoundData * sd = (SoundData*)boxes.back().get()->getData();
+            sd->soundID = ofRandom(0, N_SOUNDS);
+            sd->bHit	= false;
         }
         else if (mode == MODE_CATCH) {
             //
         }
         else if (mode == MODE_LINE){
             lines.back().addVertex(touch.x, touch.y);
+            
         }
     
     }
@@ -174,6 +202,49 @@ void ofApp::touchDoubleTap(ofTouchEventArgs & touch){
     
 }
 
+
+void ofApp::contactStart(ofxBox2dContactArgs &e) {
+//    cout << "contact" <<endl;
+    if(e.a != NULL && e.b != NULL) {
+        
+        // if we collide with the ground we do not
+        // want to play a sound. this is how you do that
+        if(e.a->GetType() == b2Shape::e_circle && e.b->GetType() == b2Shape::e_circle) {
+            
+            SoundData * aData = (SoundData*)e.a->GetBody()->GetUserData();
+            SoundData * bData = (SoundData*)e.b->GetBody()->GetUserData();
+            
+            if(aData) {
+                aData->bHit = true;
+                sound[aData->soundID].play();
+                snd.play();
+            }
+            
+            if(bData) {
+                bData->bHit = true;
+                sound[bData->soundID].play();
+                snd.play();
+            }
+        }
+    }
+}
+
+//--------------------------------------------------------------
+void ofApp::contactEnd(ofxBox2dContactArgs &e) {
+    if(e.a != NULL && e.b != NULL) {
+        
+        SoundData * aData = (SoundData*)e.a->GetBody()->GetUserData();
+        SoundData * bData = (SoundData*)e.b->GetBody()->GetUserData();
+        
+        if(aData) {
+            aData->bHit = false;
+        }
+        
+        if(bData) {
+            bData->bHit = false;
+        }
+    }
+}
 
 
 void ofApp::guiEvent(ofxUIEventArgs &e)

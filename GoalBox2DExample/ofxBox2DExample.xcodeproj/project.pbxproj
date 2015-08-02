@@ -81,6 +81,11 @@
 		E4A823A412561BE3002F86A2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4A823A312561BE3002F86A2 /* CoreGraphics.framework */; };
 		E4D8936E11527B74007E1F53 /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = E4D8936B11527B74007E1F53 /* main.mm */; };
 		E4D8936F11527B74007E1F53 /* ofApp.mm in Sources */ = {isa = PBXBuildFile; fileRef = E4D8936D11527B74007E1F53 /* ofApp.mm */; };
+		E692593E1B6B638E000F69AB /* 0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E69259391B6B638E000F69AB /* 0.mp3 */; };
+		E692593F1B6B638E000F69AB /* 1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E692593A1B6B638E000F69AB /* 1.mp3 */; };
+		E69259401B6B638E000F69AB /* 2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E692593B1B6B638E000F69AB /* 2.mp3 */; };
+		E69259411B6B638E000F69AB /* 3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E692593C1B6B638E000F69AB /* 3.mp3 */; };
+		E69259421B6B638E000F69AB /* 4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E692593D1B6B638E000F69AB /* 4.mp3 */; };
 		E6D6642F1B529B0F004CE27D /* iOSDevice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E6D6642C1B529B0F004CE27D /* iOSDevice.cpp */; };
 		E6D664AE1B52A3E9004CE27D /* ofxUI2DGraph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E6D664511B52A3E9004CE27D /* ofxUI2DGraph.cpp */; };
 		E6D664AF1B52A3E9004CE27D /* ofxUI2DPad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E6D664531B52A3E9004CE27D /* ofxUI2DPad.cpp */; };
@@ -291,6 +296,11 @@
 		E555B42DF1D4FF502F76F8AF /* b2Timer.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = b2Timer.cpp; path = ../../../addons/ofxBox2d/libs/Box2D/Common/b2Timer.cpp; sourceTree = SOURCE_ROOT; };
 		E5922CF5578D5431F2AB941D /* b2CollideCircle.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = b2CollideCircle.cpp; path = ../../../addons/ofxBox2d/libs/Box2D/Collision/b2CollideCircle.cpp; sourceTree = SOURCE_ROOT; };
 		E5EDA9377C57A979E49C6C13 /* b2PulleyJoint.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = b2PulleyJoint.h; path = ../../../addons/ofxBox2d/libs/Box2D/Dynamics/Joints/b2PulleyJoint.h; sourceTree = SOURCE_ROOT; };
+		E69259391B6B638E000F69AB /* 0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 0.mp3; sourceTree = "<group>"; };
+		E692593A1B6B638E000F69AB /* 1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 1.mp3; sourceTree = "<group>"; };
+		E692593B1B6B638E000F69AB /* 2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 2.mp3; sourceTree = "<group>"; };
+		E692593C1B6B638E000F69AB /* 3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 3.mp3; sourceTree = "<group>"; };
+		E692593D1B6B638E000F69AB /* 4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 4.mp3; sourceTree = "<group>"; };
 		E6D6642C1B529B0F004CE27D /* iOSDevice.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = iOSDevice.cpp; sourceTree = "<group>"; };
 		E6D6642D1B529B0F004CE27D /* iOSDevice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iOSDevice.h; sourceTree = "<group>"; };
 		E6D6642E1B529B0F004CE27D /* ofxiOSAdjustWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxiOSAdjustWindow.h; sourceTree = "<group>"; };
@@ -464,6 +474,7 @@
 				678E130F17951549005B6D19 /* Default-568h@2x~iphone.png */,
 				E6D665751B52A8BD004CE27D /* TSTARPRO-Light.otf */,
 				E6D665771B52A9AA004CE27D /* TSTARPRO-Medium.otf */,
+				E69259381B6B638E000F69AB /* sfx */,
 				E4D8936A11527B74007E1F53 /* src */,
 				BB24E1F710DAA51900E9C588 /* openFrameworks */,
 				BB16F26B0F2B646B00518274 /* addons */,
@@ -732,6 +743,19 @@
 			path = src;
 			sourceTree = SOURCE_ROOT;
 		};
+		E69259381B6B638E000F69AB /* sfx */ = {
+			isa = PBXGroup;
+			children = (
+				E69259391B6B638E000F69AB /* 0.mp3 */,
+				E692593A1B6B638E000F69AB /* 1.mp3 */,
+				E692593B1B6B638E000F69AB /* 2.mp3 */,
+				E692593C1B6B638E000F69AB /* 3.mp3 */,
+				E692593D1B6B638E000F69AB /* 4.mp3 */,
+			);
+			name = sfx;
+			path = src/sfx;
+			sourceTree = "<group>";
+		};
 		E6D6642A1B529B0F004CE27D /* ofxiOSAdjustWindow */ = {
 			isa = PBXGroup;
 			children = (
@@ -982,14 +1006,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E692593F1B6B638E000F69AB /* 1.mp3 in Resources */,
 				E41D3ED713B38FB500A75A5D /* Project.xcconfig in Resources */,
+				E692593E1B6B638E000F69AB /* 0.mp3 in Resources */,
 				E41D3EE613B3906D00A75A5D /* CoreOF.xcconfig in Resources */,
 				678E130817951530005B6D19 /* Icon@2x.png in Resources */,
 				678E130A17951536005B6D19 /* Icon.png in Resources */,
 				678E130C1795153C005B6D19 /* Default.png in Resources */,
 				E6D665761B52A8BD004CE27D /* TSTARPRO-Light.otf in Resources */,
 				E6D665781B52A9AA004CE27D /* TSTARPRO-Medium.otf in Resources */,
+				E69259401B6B638E000F69AB /* 2.mp3 in Resources */,
 				678E130E17951540005B6D19 /* Default@2x.png in Resources */,
+				E69259421B6B638E000F69AB /* 4.mp3 in Resources */,
+				E69259411B6B638E000F69AB /* 3.mp3 in Resources */,
 				678E131017951549005B6D19 /* Default-568h@2x~iphone.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

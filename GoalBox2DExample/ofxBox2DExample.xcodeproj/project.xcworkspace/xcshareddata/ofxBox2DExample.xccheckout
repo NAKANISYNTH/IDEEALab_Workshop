@@ -14,7 +14,7 @@
 		<string>https://github.com/NAKANISYNTH/IDEEALab_Workshop.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>ofxBox2DExample/ofxBox2DExample.xcodeproj</string>
+	<string>GoalBox2DExample/ofxBox2DExample.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>98E935F32C62FB032E3C31FCC5D29FC98F5F437C</key>

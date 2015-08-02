@@ -5,11 +5,19 @@
 #include "ofxiOSExtras.h"
 #include "ofxBox2d.h"
 #include "ofxUI.h"
+#include "ofxOpenALSoundPlayer.h"
 
 #define MODE_CIRCLE 0
 #define MODE_RECTANGLE 1
 #define MODE_CATCH 2
 #define MODE_LINE 3
+#define N_SOUNDS 5
+
+class SoundData {
+public:
+    int	 soundID;
+    bool bHit;
+};
 
 class ofApp : public ofxiOSApp {
 
@@ -43,6 +51,13 @@ public:
     bool isInputingGUI;
     
     bool bShowGui = true;
+    
+    void contactStart(ofxBox2dContactArgs &e);
+    void contactEnd(ofxBox2dContactArgs &e);
+    
+    // when the ball hits we play this sound
+    ofxOpenALSoundPlayer  sound[N_SOUNDS];
+    ofSoundPlayer snd;
 
 };
 
